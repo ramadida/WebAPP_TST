@@ -4,9 +4,10 @@
         <title>Bioskop x Twitter</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/uikit.min.css" />
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/uikit.min.css') }}" />
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
+        
     </head>
     <body>
 		<div class="uk-container">
@@ -33,17 +34,27 @@
 						<canvas width="600" height="400"></canvas>
 					</div>
 					<div>
-						<div class="uk-card-body">
-							<h3 class="uk-card-title uk-text-bold uk-text-large">Judul Film</h3>
-							<p class="uk-text-meta">sinopsis</p>
-						</div>
-						<p uk-margin>    					
-    						<a class="uk-button uk-button-primary uk-position-medium uk-position-bottom-right uk-text-capitalize" href="single_nowplaying.html">See Tweet</a>
-						</p>
+						{% for np in nps %}
+							<div class="uk-card-body">
+								<h3 class="uk-card-title uk-text-bold uk-text-large">
+						            	<tr>
+						                	<td>{{ np['title'] }}</td>
+						            	</tr>
+								</h3>
+								<p class="uk-text-meta">
+							            <tr>
+							                <td>{{ np['overview'] }}</td>
+							            </tr>
+								</p>
+							</div>
+							<p uk-margin>    					
+	    						<a class="uk-button uk-button-primary uk-position-medium uk-position-bottom-right uk-text-capitalize" href="single_nowplaying.html">See Tweet</a>
+							</p>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
-		</div>	 
+		</div>
     </body>
 </html>
 

@@ -68,14 +68,14 @@ def internal_server_error(e):
 def root():
     return 'RESTful API Sederhana Menggunakan Flask'
 
-@app.route('/film/popular')
-def popular():
+@app.route('/movie/now_playing')
+def now_playing():
     try :
         movie = Movie()
-        popular = movie.popular()
+        now_playing = movie.now_playing()
 
         data = []
-        for p in popular:
+        for p in now_playing:
             data.append({
                 'id' : p.id,
                 'title' : p.title,
@@ -88,38 +88,19 @@ def popular():
     except Exception as e :
         abort(404)
 
-@app.route('/film/detailfilm/<id>')
-def detailfilm(id):
+@app.route('/movie/upcoming')
+def upcoming():
     try :
         movie = Movie()
-        m = movie.details(id)
+        upcoming = movie.upcoming()
 
         data = []
-        data.append({
-            'title' : m.title,
-            'overview' : m.overview,
-            'popularity' : m.popularity
-        })
-
-        return jsonify(data)
-
-    except Exception as e :
-        abort(404)
-
-@app.route('/film/moviebytitle/<title>')
-def moviebytitle(title):
-    try :
-        movie = Movie()
-        search = movie.search(title)
-
-        data = []
-        for res in search:
+        for p in upcoming:
             data.append({
-                'id' : res.id,
-                'title' : res.title,
-                'overview' : res.overview,
-                'poster_path' : res.poster_path,
-                'vote_avarage' : res.vote_average
+                'id' : p.id,
+                'title' : p.title,
+                'overview' : p.overview,
+                'poster_path' : p.poster_path
             })
 
         return jsonify(data)
@@ -127,24 +108,7 @@ def moviebytitle(title):
     except Exception as e :
         abort(404)
 
-@app.route('/film/findmovbyid/<id>')
-def findmovbyid(id):
-    try :
-        movie = Movie()
-        similar = movie.similar(id)
-
-        data = []
-        for result in similar:
-            data.append({
-            'title' : result.title,
-            'overview' : result.overview
-        })
-
-        return jsonify(data)
-
-    except Exception as e :
-        abort(404)
 
 if __name__ == '__main__':
     #create_table()
-    app.run(debug=True)
+    app.run(port = 5001)
