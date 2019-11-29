@@ -1,7 +1,8 @@
 import tweepy
-
-from flask import Flask
+from flask import Flask, jsonify
 app = Flask(__name__)
+
+
 # Fill the X's with the credentials obtained by
 # following the above mentioned procedure.
 consumer_key = "vun19WFwsJNMOG8zTcWIgHaRP"
@@ -16,9 +17,24 @@ auth.set_access_token(access_token, access_secret)
 api = tweepy.API(auth)
 
 
+# def filtersearch_tweets(search_word):
+# for tweet in api.search(q=search_word, result_type="popular"):
+# print(f"{tweet.user.name}:{tweet.text}")
+
+
+@app.route('/')
+@app.route('/getTweetsByFilter/<search_word>')
 def filtersearch_tweets(search_word):
-    for tweet in api.search(q=search_word, result_type="popular"):
-        print(f"{tweet.user.name}:{tweet.text}")
+
+    result = []
+    tweets = api.search(q=search_word, result_type="popular")
+    for tweet in tweets:
+        result.append({
+            'Username': "@" + tweet.user.screen_name,
+            'Tweets': tweet.text
+        })
+    return jsonify(result)
 
 
-filtersearch_tweets("Unai Emery")
+if __name__ == '__main__':
+    app.run()
