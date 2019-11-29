@@ -4,21 +4,22 @@
         <title>Bioskop x Twitter</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/uikit.min.css" />
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/uikit.min.css') }}" />
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
+        
     </head>
     <body>
 		<div class="uk-container">
 			<div class="col">
 				<nav class="uk-navbar-container" uk-navbar>
 					<div class="uk-navbar-left">
-						<h2 class="uk-margin-left uk-text-bolder">Bioskop x Twitter</h2>
+						<h2 class="uk-margin-left uk-text-bolder" href="/movie/now_playing">Bioskop x Twitter</h2>
 					</div>
 					<div class="uk-navbar-right">
 						<ul class="uk-navbar-nav">
-							<li class="uk-parent uk-text-bold"><a href="nowplaying.html">Now Playing</a></li>
-							<li class="uk-active uk-text-bold"><a href="comingsoon.html">Coming Soon</a></li>
+							<li class="uk-parent uk-text-bold"><a href="/movie/now_playing">Now Playing</a></li>
+							<li class="uk-active uk-text-bold"><a href="/movie/upcoming">Coming Soon</a></li>
 							<li><a href=""></a></li>
 						</ul>
 					</div>	
@@ -26,24 +27,33 @@
 			</div>
 		</div>
 		<div class="uk-container">
+				{% for uc in ucs %}
 			<div class="col uk-padding">
 				<div class="uk-card uk-card-body uk-card-small uk-grid-collapse uk-child-width-1-3@s uk-grid-column-small uk-grid">
 					<div class="uk-card-media-left uk-cover-container">
-						<img src="images/1.jpg" alt="" uk-cover>
+						<img src="https://image.tmdb.org/t/p/w500{{ uc['poster_path'] }}" alt="anu" uk-cover>
 						<canvas width="600" height="400"></canvas>
 					</div>
 					<div>
-						<div class="uk-card-body">
-							<h3 class="uk-card-title uk-text-bold uk-text-large">Judul Film</h3>
-							<p class="uk-text-meta">sinopsis</p>
-						</div>
-						<p uk-margin>    					
-							<a class="uk-button uk-button-primary uk-position-medium uk-position-bottom-right uk-text-capitalize" href="single_comingsoon.html">See Tweet</a>
-						</p>
+							<div class="uk-card-body">
+								<h3 class="uk-card-title uk-text-bold uk-text-large">
+						            	<tr>
+						                	<td>{{ uc['title'] }}</td>
+						            	</tr>
+								</h3>
+								<p class="uk-text-meta">
+							            <tr>
+							                <td>{{ uc['overview'] }}</td>
+							            </tr>
+								</p>
+								<button class="uk-button uk-button-primary uk-text-capitalize" href="single_nowplaying.html">See Tweet
+	    						</button> 
+							</div> 					
 					</div>
 				</div>
 			</div>
-		</div>	 
+				{% endfor %}
+		</div>
     </body>
 </html>
 

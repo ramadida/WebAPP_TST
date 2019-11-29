@@ -4,16 +4,16 @@
         <title>Bioskop x Twitter</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/uikit.min.css" />
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/uikit.min.css') }}" />
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
     </head>
     <body>
 		<div class="uk-container">
 			<div class="col">
 				<nav class="uk-navbar-container" uk-navbar>
 					<div class="uk-navbar-left">
-						<h2 class="uk-margin-left uk-text-bolder">Bioskop x Twitter</h2>
+						<h2 class="uk-margin-left uk-text-bolder">{{ Tweet }}</h2>
 					</div>
 					<div class="uk-navbar-right">
 						<ul class="uk-navbar-nav">
@@ -26,21 +26,6 @@
 			</div>
 		</div>
 		<div class="uk-container">
-			<div class="col uk-padding">
-				<div class="uk-card uk-card-body uk-card-small uk-grid-collapse uk-child-width-1-3@s uk-grid-column-small uk-grid">
-					<div class="uk-card-media-left uk-cover-container">
-						<img src="images/1.jpg" alt="" uk-cover>
-						<canvas width="600" height="400"></canvas>
-					</div>
-					<div>
-						<div class="uk-card-body">
-							<h3 class="uk-card-title uk-text-bold uk-text-large">Judul Film</h3>
-							<p class="uk-text-meta">Sinopsis</p>
-							<p class="uk-text-meta">Waktu Tayang</p>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="col uk-padding" id="tweets_col">
 				 <div class="uk-card uk-card-default uk-card-body uk-card-small uk-margin-auto uk-child-width-1-4@s uk-grid-column-small">
             		<h3 class="uk-card-title uk-text-bold">Username</h3>
