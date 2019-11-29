@@ -44,7 +44,10 @@ def movietweets():
     	query = request.args.get('q')
     	query.replace('%20', ' ')
     	tweets = filtersearch_tweets(query)
-    	return render_template('single_nowplaying.html', Tweet=tweets)
+    	if tweets:
+    		return render_template('single_nowplaying.html', tws=tweets)
+    	else:
+    		return render_template('404.html')
     except Exception as e:
         raise e
 
