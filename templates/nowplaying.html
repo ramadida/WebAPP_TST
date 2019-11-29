@@ -14,7 +14,7 @@
 			<div class="col">
 				<nav class="uk-navbar-container" uk-navbar>
 					<div class="uk-navbar-left">
-						<h2 class="uk-margin-left uk-text-bolder">Bioskop x Twitter</h2>
+						<h2 class="uk-margin-left uk-text-bolder" href="nowplaying.html">Bioskop x Twitter</h2>
 					</div>
 					<div class="uk-navbar-right">
 						<ul class="uk-navbar-nav">
@@ -46,10 +46,9 @@
 							                <td>{{ np['overview'] }}</td>
 							            </tr>
 								</p>
-							</div>
-							<p uk-margin>    					
-	    						<a class="uk-button uk-button-primary uk-position-medium uk-position-bottom-right uk-text-capitalize" href="single_nowplaying.html">See Tweet</a>
-							</p>
+								<button class="uk-button uk-button-primary uk-position-medium uk-position-bottom-right uk-text-capitalize" href="single_nowplaying.html">See Tweet
+	    						</button> 
+							</div> 					
 						{% endfor %}
 					</div>
 				</div>
