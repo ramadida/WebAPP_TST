@@ -1,12 +1,13 @@
 import tweepy
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
+import os
 import requests
-import json
 
-consumer_key = "vun19WFwsJNMOG8zTcWIgHaRP"
-consumer_secret = "6vP95kbUUdHGqCYtY4DXfNyJTa2wFdTf598jKZazKqiKOjSJNu"
-access_token = "83359542-CbOtYl25zVKKlVaAEhPvsa3oHq9f73JGNanTC5nit"
-access_secret = "sNZhq5WpXTAqo0aecYruGYcXnx1W5RISqXhGGycklMFxE"
+
+consumer_key = os.environ['CONSUMER_KEY']
+consumer_secret = os.environ['CONSUMER_SECRET']
+access_token = os.environ['ACCESS_TOKEN']
+access_secret = os.environ['ACCESS_SECRET']
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)

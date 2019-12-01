@@ -6,8 +6,10 @@ Mata Kuliah II3160 - Teknologi Sistem Terintegrasi\
 Ramadida Rai P - 18217008\
 Habiib Az Zumar - 18217010\
 \
-External API: Twitter\
-Internal API: Bioskop\
+External API: Twitter
+Internal API: https://bioskop-api.herokuapp.com
+
+Deployed application: https://bioskop-twitter.herokuapp.com
 
 
 ## Setup (on Windows example)
