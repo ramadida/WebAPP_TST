@@ -24,7 +24,8 @@ def filtersearch_tweets(search_word):
     for tweet in tweets:
         result.append({
             'Username': "@" + tweet.user.screen_name,
-            'Tweets': tweet.full_text
+            'Tweets': tweet.text
+            'URL': tweet.entities.urls.url
         })
     return result
 
