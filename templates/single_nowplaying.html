@@ -17,7 +17,7 @@
 					</div>
 					<div class="uk-navbar-right">
 						<ul class="uk-navbar-nav">
-							<li class="uk-active uk-text-bold"><a href="/movie/now_playing">Now Playing</a></li>
+							<li class="uk-parent uk-text-bold"><a href="/movie/now_playing">Now Playing</a></li>
 							<li class="uk-parent uk-text-bold"><a href="/movie/upcoming">Coming Soon</a></li>
 							<li><a href=""></a></li>
 						</ul>
@@ -28,7 +28,7 @@
 		<div class="uk-container">
 			{% for tw in tws %}
   			<div class="col uk-padding" id="tweets_col">
-  				 <div class="uk-card uk-card-default uk-card-body uk-card-small uk-margin-auto uk-child-width-1-4@s uk-grid-column-small">
+  				 <div class="uk-card uk-card-default uk-card-body uk-card-small uk-child-width-1-4@s">
               		<h3 class="uk-card-title uk-text-bold">
               			<tr>
   	                		<td>{{ tw['Username'] }}</td>
