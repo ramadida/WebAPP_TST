@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/uikit.min.css') }}" />
         <script type="text/javascript" src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
-        
+
     </head>
     <body>
 		<div class="uk-container">
@@ -22,8 +22,8 @@
 							<li class="uk-active uk-text-bold"><a href="/movie/upcoming">Coming Soon</a></li>
 							<li><a href=""></a></li>
 						</ul>
-					</div>	
-				</nav>	
+					</div>
+				</nav>
 			</div>
 		</div>
 		<div class="uk-container">
@@ -46,11 +46,11 @@
 							                <td>{{ uc['overview'] }}</td>
 							            </tr>
 								</p>
-								<a href="getTweetsByFilter?q={{ uc['title'] }}">
+								<a href="movie/getTweetsByFilter?q={{ uc['title'] }}">
 									<button class="uk-button uk-button-primary uk-text-capitalize">See Tweet
 	    							</button>
 	    						</a>
-							</div> 					
+							</div>
 					</div>
 				</div>
 			</div>
@@ -58,4 +58,3 @@
 		</div>
     </body>
 </html>
-
