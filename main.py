@@ -16,6 +16,7 @@ api = tweepy.API(auth)
 
 app = Flask(__name__)
 
+
 def filtersearch_tweets(search_word):
     result = []
     tweets = api.search(q=search_word, result_type="popular")
@@ -26,28 +27,30 @@ def filtersearch_tweets(search_word):
         })
     return result
 
+
 @app.route('/')
 @app.route('/movie/now_playing')
 def nowplaying():
-    data = requests.get('http://localhost:5001/movie/now_playing').json()
+    data = requests.get('https://bioskop-api.herokuapp.com/movie/now_playing').json()
     return render_template('nowplaying.html', nps=data)
+
 
 @app.route('/movie/upcoming')
 def upcoming():
-    dataa = requests.get('http://localhost:5001/movie/upcoming').json()
+    dataa = requests.get('https://bioskop-api.herokuapp.com/movie/upcoming').json()
     return render_template('comingsoon.html', ucs=dataa)
 
 
 @app.route('/movie/getTweetsByFilter')
 def movietweets():
     try:
-    	query = request.args.get('q')
-    	query.replace('%20', ' ')
-    	tweets = filtersearch_tweets(query)
-    	if tweets:
-    		return render_template('single_nowplaying.html', tws=tweets)
-    	else:
-    		return render_template('404.html')
+        query = request.args.get('q')
+        query.replace('%20', ' ')
+        tweets = filtersearch_tweets(query)
+        if tweets:
+            return render_template('single_nowplaying.html', tws=tweets)
+        else:
+            return render_template('404.html')
     except Exception as e:
         raise e
 
