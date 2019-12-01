@@ -25,7 +25,7 @@ def filtersearch_tweets(search_word):
         result.append({
             'Username': "@" + tweet.user.screen_name,
             'Tweets': tweet.text,
-            'URL': "https://twitter.com/user/status/{tweet.id}"
+            'URL': "https://twitter.com/{tweet.user.screen_name}/status/{tweet.id}"
         })
     return result
 
