@@ -42,7 +42,7 @@ def upcoming():
     return render_template('comingsoon.html', ucs=dataa)
 
 
-@app.route('/movie/getTweetsByFilter')
+@app.route('/getTweetsByFilter')
 def movietweets():
     try:
         query = request.args.get('q')
